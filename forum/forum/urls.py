@@ -27,4 +27,5 @@ urlpatterns = [
     path('boards/<int:pk>', main_app_views.board_topics, name='board_topics'),
     path('boards/<int:pk>/new', main_app_views.new_topic, name='new_topic'),
     path('signup/', accounts_views.signup, name='signup'),
+    path('logout/', accounts_views.user_logout, name='logout'),
 ]
