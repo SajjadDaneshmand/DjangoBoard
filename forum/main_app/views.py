@@ -1,11 +1,9 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
-from .models import Board, Topic, Post
 
 # internal
 from .forms import NewTopicForm
-from .models import Board
+from .models import Board, Topic, Post
 
 
 def home(request):
@@ -38,3 +36,8 @@ def new_topic(request, pk):
     else:
         form = NewTopicForm()
     return render(request, 'new_topic.html', {'board': board, 'form': form})
+
+
+def topic_posts(request, pk, topic_pk):
+    topic = get_object_or_404(Topic, board_pk=pk, pk=topic_pk)
+    return render(request, 'topic_posts.html', {'topic': topic})
