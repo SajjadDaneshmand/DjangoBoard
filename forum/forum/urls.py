@@ -11,9 +11,9 @@ from accounts import views as accounts_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', main_app_views.home, name='home'),
-    path('boards/<int:pk>', main_app_views.board_topics, name='board_topics'),
-    path('boards/<int:pk>/new', main_app_views.new_topic, name='new_topic'),
-    path('board/<int:pk>/topics/<int:topic_pk>/', main_app_views.topic_posts, name='topic_posts'),
+    path('boards/<int:pk>/', main_app_views.board_topics, name='board_topics'),
+    path('boards/<int:pk>/new/', main_app_views.new_topic, name='new_topic'),
+    path('boards/<int:pk>/topics/<int:topic_pk>/', main_app_views.topic_posts, name='topic_posts'),
     path('signup/', accounts_views.signup, name='signup'),
     path('logout/', accounts_views.user_logout, name='logout'),
     path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),

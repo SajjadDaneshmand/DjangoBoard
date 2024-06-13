@@ -22,7 +22,7 @@ class BoardTopicsTests(TestCase):
         self.assertEqual(response.status_code, 404)
 
     def test_board_topics_url_resolves_board_topics_view(self):
-        view = resolve('/boards/1')
+        view = resolve(f'/boards/{self.board.pk}/')
         self.assertEqual(view.func, board_topics)
 
     def test_board_topics_view_contains_navigation_links(self):

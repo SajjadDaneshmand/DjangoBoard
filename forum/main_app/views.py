@@ -39,5 +39,5 @@ def new_topic(request, pk):
 
 
 def topic_posts(request, pk, topic_pk):
-    topic = get_object_or_404(Topic, board_pk=pk, pk=topic_pk)
+    topic = get_object_or_404(Topic, board_id=pk, id=topic_pk)
     return render(request, 'topic_posts.html', {'topic': topic})

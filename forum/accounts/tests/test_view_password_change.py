@@ -13,7 +13,9 @@ class LoginRequiredPasswordChangeTests(TestCase):
 
 
 class PasswordChangeTestCase(TestCase):
-    def setUp(self, data=()):
+    def setUp(self, data=None):
+        if data is None:
+            data = {}
         self.user = User.objects.create_user(username='john', email='john@doe.com', password='old_password')
         self.url = reverse('password_change')
         self.client.login(username='john', password='old_password')
@@ -21,7 +23,9 @@ class PasswordChangeTestCase(TestCase):
 
 
 class SuccessfulPasswordChangeTests(PasswordChangeTestCase):
-    def setUp(self, data=()):
+    def setUp(self, data=None):
+        if data is None:
+            data = {}
         super().setUp({
             'old_password': 'old_password',
             'new_password1': 'new_password',
@@ -57,7 +61,7 @@ class InvalidPasswordChangeTests(PasswordChangeTestCase):
         """
         An invalid form submission should return to the same page
         """
-        self.assertEquals(self.response.status_code, 200)
+        self.assertEqual(self.response.status_code, 200)
 
     def test_form_errors(self):
         form = self.response.context.get('form')
