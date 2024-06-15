@@ -20,7 +20,6 @@
         <th>Starter</th>
         <th>Replies</th>
         <th>Views</th>
-        <th>Last Update</th>
       </tr>
     </thead>
     <tbody>
@@ -29,10 +28,11 @@
           <td><a href="{% url 'topic_posts' board.pk topic.pk %}">{{ topic.subject }}</a></td>
           <td>{{ topic.starter.username }}</td>
           <td>{{ topic.replies }}</td>
-          <td>{{ topic.views }}</td>  <!-- here -->
-          <td>{{ topic.last_updated }}</td>
+          <td>{{ topic.views }}</td>
         </tr>
       {% endfor %}
     </tbody>
   </table>
+
+
 {% endblock %}
