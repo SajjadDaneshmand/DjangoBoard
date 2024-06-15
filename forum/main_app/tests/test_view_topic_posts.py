@@ -5,7 +5,7 @@ from django.urls import resolve, reverse
 
 # internal
 from ..models import Board, Post, Topic
-from ..views import topic_posts
+from ..views import PostListView
 
 
 class TopicPostsTests(TestCase):
@@ -22,4 +22,4 @@ class TopicPostsTests(TestCase):
 
     def test_view_function(self):
         view = resolve(f'/boards/{self.board.pk}/topics/{self.topic.pk}/')
-        self.assertEqual(view.func, topic_posts)
+        self.assertEqual(view.func.view_class, PostListView)
